@@ -246,16 +246,28 @@ with tab0:
     """)
     
 with tab1:
-    st.header("Heart Disease Prediction App")
+    st.header("Exploring Machine Learning for Heart Disease Analysis")
     st.write("""
-    This application uses machine learning models to predict heart disease. 
-    You can interact with different tabs to explore data preprocessing, 
-    model tuning, and the impact of clustering on model performance.
-    """)    
+        Welcome to our exploration of machine learning in the context of heart disease prediction. 
+        This section provides an overview of how different features influence the accuracy of 
+        machine learning models and highlights key features that are crucial in predicting heart disease.
+    """)
+  
     st.header("K-Means Clustering and Model Accuracy by Number of Features")
 
    # K-Means Elbow Curve and Silhouette Scores
-    st.subheader("K-Means Elbow Curve and Silhouette Scores")
+    st.subheader("Finding the Optimal Number of Clusters")
+    st.write("""
+        Clustering helps in understanding data patterns, and choosing the right number of clusters 
+        is important for meaningful analysis. We use two approaches to find the best number:
+        
+        - **Elbow Method**: Helps identify a point where adding more clusters brings little 
+          improvement in modeling the data.
+        - **Silhouette Score**: Measures how well data is clustered, with higher scores 
+          indicating clearer, better-defined clusters.
+        
+        These methods assist in selecting a suitable number of clusters for our data analysis.
+    """)
     K_max = 10
     inertia, silhouette_scores = calculate_elbow_curve(X, K_max)
     elbow_df = pd.DataFrame({
@@ -294,7 +306,17 @@ with tab1:
     st.plotly_chart(fig)
 
     # Classifier Accuracy by Number of Features
-    st.subheader("Classifier Accuracy by Number of Features")
+    st.subheader("Assessing the Impact of Feature Quantity on Model Accuracy")
+    st.write("""
+        In machine learning, the number of features used can significantly impact model accuracy. 
+        This part of the analysis looks into:
+        
+        - How varying the number of features affects the accuracy of the models.
+        - Observing the point at which adding more features yields diminishing returns in accuracy.
+        
+        This helps in determining an effective number of features for the models.
+    """)
+
     classifiers = {
         "KNN": KNeighborsClassifier(),
         "Decision Tree": DecisionTreeClassifier(),
@@ -328,6 +350,15 @@ with tab1:
             plot_feature_importance(model.feature_importances_, feature_names, f'{name} Feature Importances')
         else:
             st.write(f'Feature importances are not available for the {name} model.')
+    st.subheader("Evaluating Feature Significance")
+    st.write("""
+        Understanding which features most significantly predict heart disease is crucial in model development:
+        
+        - **Decision Trees** highlight the most important features in making predictions.
+        - **Random Forests** provide a more comprehensive view by aggregating insights from multiple trees.
+        
+        Analyzing feature importance is key to enhancing model performance and gaining insights into heart disease.
+    """)
 
 
 # Model Comparison Tab
