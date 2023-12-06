@@ -258,8 +258,7 @@ with tab0:
             scientific expertise with technological solutions.
         """)
 
-
-     with st.expander("Vision in Data Science and Bioinformatics")
+    with st.expander("Vision in Data Science and Bioinformatics")
         st.write("""
             Currently pursuing a Master's degree in Data Science at Michigan State University, Kevin 
             is poised to be at the forefront of the emerging field of bioinformatics. He envisions data 
