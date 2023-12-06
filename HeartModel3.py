@@ -200,7 +200,15 @@ def plot_feature_importance(importances, feature_names, title):
     fig.update_layout(title=title)
     st.plotly_chart(fig)
 
-    
+@st.cache_data
+def initialize_default_models():
+    return {
+        "KNN": KNeighborsClassifier(n_neighbors=5),
+        "Decision Tree": DecisionTreeClassifier(max_depth=5, min_samples_split=2),
+        "SVM": SVC(C=0.1, kernel='rbf', probability=True),
+        "Random Forest": RandomForestClassifier(n_estimators=10, max_depth=5)
+    }
+
 # Setup
 st.title('Heart Disease Prediction with K-Means Clustering')
 
@@ -431,30 +439,44 @@ with tab3:
     X_train_preselected, X_test_preselected, y_train_preselected, y_test_preselected = train_test_split(X_preselected, y_preselected, test_size=0.2, random_state=42)
 
     # Hyperparameters input for each model
+# Grouping Hyperparameters with Expanders
     with st.expander("KNN Hyperparameters"):
         n_neighbors = st.slider("Number of Neighbors", 1, 20, 5, key='knn_n_neighbors')
-    
-    with st.expander("Decision Tree Hyperparameters"):
-        dt_max_depth = st.slider("Max Depth", 1, 20, 5, key='dt_max_depth')
-        dt_min_samples_split = st.slider("Min Samples Split", 2, 10, 2, key='dt_min_samples_split')
-    
-    with st.expander("SVM Hyperparameters"):
-        svm_C = st.slider("C (Regularization)", 0.01, 1.0, 0.1, key='svm_C')
-        svm_kernel = st.selectbox("Kernel", ["linear", "poly", "rbf", "sigmoid"], key='svm_kernel')
-    
-    with st.expander("Random Forest Hyperparameters"):
-        rf_n_estimators = st.slider("Number of Trees", 10, 100, 10, key='rf_n_estimators')
-        rf_max_depth = st.slider("Max Depth", 1, 20, 5, key='rf_max_depth')
 
+    with st.expander("Decision Tree Hyperparameters"):
+        col1, col2 = st.columns(2)
+        with col1:
+            dt_max_depth = st.slider("Max Depth", 1, 20, 5, key='dt_max_depth')
+        with col2:
+            dt_min_samples_split = st.slider("Min Samples Split", 2, 10, 2, key='dt_min_samples_split')
+
+    with st.expander("SVM Hyperparameters"):
+        col1, col2 = st.columns(2)
+        with col1:
+            svm_C = st.slider("C (Regularization)", 0.01, 1.0, 0.1, key='svm_C')
+        with col2:
+            svm_kernel = st.selectbox("Kernel", ["linear", "poly", "rbf", "sigmoid"], key='svm_kernel')
+
+    with st.expander("Random Forest Hyperparameters"):
+        col1, col2 = st.columns(2)
+        with col1:
+            rf_n_estimators = st.slider("Number of Trees", 10, 100, 10, key='rf_n_estimators')
+        with col2:
+            rf_max_depth = st.slider("Max Depth", 1, 20, 5, key='rf_max_depth')
+
+    if 'models' not in st.session_state:
+        st.session_state['models'] = initialize_default_models()
+        
     # Train and Evaluate All Models Button
     if st.button("Train and Evaluate All Models"):
         # Setting up models with updated hyperparameters
-        models = {
+        st.session_state['models'] = {
             "KNN": KNeighborsClassifier(n_neighbors=n_neighbors),
             "Decision Tree": DecisionTreeClassifier(max_depth=dt_max_depth, min_samples_split=dt_min_samples_split),
             "SVM": SVC(C=svm_C, kernel=svm_kernel, probability=True),
             "Random Forest": RandomForestClassifier(n_estimators=rf_n_estimators, max_depth=rf_max_depth)
         }
+
 
         # Training and evaluating each model on both datasets
         model_performances_all = {}
