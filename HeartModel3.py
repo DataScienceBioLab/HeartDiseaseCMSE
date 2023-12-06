@@ -212,6 +212,12 @@ X, y, _ = preprocess_data()
 tab1, tab2, tab3, tab4 = st.tabs(["K-Means Clustering", "Model Comparison", "Model Tuning", "Model Evaluation"])
 
 with tab1:
+    st.header("Heart Disease Prediction App")
+    st.write("""
+    This application uses machine learning models to predict heart disease. 
+    You can interact with different tabs to explore data preprocessing, 
+    model tuning, and the impact of clustering on model performance.
+    """)    
     st.header("K-Means Clustering and Model Accuracy by Number of Features")
 
    # K-Means Elbow Curve and Silhouette Scores
@@ -292,6 +298,12 @@ with tab1:
 
 # Model Comparison Tab
 with tab2:
+    st.header("Data Preprocessing and Initial Model Evaluation")
+    st.write("""
+    In this section, you can select features to include in the model and observe how different 
+    combinations of features affect model accuracy. The models are evaluated based on their 
+    performance with the selected features.
+    """)
     st.header("Feature Selection and Model Analysis")
 
     # Feature Selection
@@ -326,6 +338,12 @@ with tab2:
 
 with tab3:
     st.header("Model Tuning")
+    st.header("Model Tuning with Hyperparameters")
+    st.write("""
+    Here, you can adjust the hyperparameters of various models to see how they 
+    influence the model's performance. Use the sliders to change the parameters 
+    and retrain the models to compare their accuracies.
+    """)
 
     # Preselected features
     preselected_features = ['max_hr', 'age', 'st_depression', 'thalass_type', 'chest_pain']
@@ -476,6 +494,13 @@ with tab3:
 
 # Tab 4: Model Evaluation with Cluster Features
 with tab4:
+    st.header("Model Improvement with K-Means Clustering")
+    st.write("""
+    This section explores the use of k-means clustering to enhance model accuracy. 
+    By adding cluster labels as a feature, we investigate whether this additional 
+    information can improve the predictive power of the models. You can select the 
+    number of clusters and compare model performance with and without cluster features.
+    """)
     st.header("Model Evaluation with Cluster Features")
 
     # Define classifiers with adjustable parameters
