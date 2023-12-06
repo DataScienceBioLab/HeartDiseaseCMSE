@@ -533,6 +533,21 @@ with tab3:
         ])
         fig_accuracy_preselected.update_layout(title="Accuracy (Preselected Features)")
         st.plotly_chart(fig_accuracy_preselected)
+        st.subheader("ROC Curves Analysis")
+        st.write("""
+            The ROC (Receiver Operating Characteristic) curve is a crucial tool for evaluating the performance of classification models.
+    
+            - **Understanding ROC Curves**: This graph shows the trade-off between the true positive rate (sensitivity) 
+              and the false positive rate (1-specificity) at various threshold settings. The area under the curve (AUC) 
+              provides a single measure of a model's effectiveness. A higher AUC indicates a model with better 
+              discriminative ability.
+    
+            - **Interpreting the Curve**: The closer the curve follows the left-hand border and then the top border 
+              of the ROC space, the more accurate the test. A curve near the 45-degree diagonal represents a model 
+              with no discriminatory power.
+    
+            ROC curves are particularly useful in settings with imbalanced classes and for comparing different models.
+        """)
 
         # Plotting precision-recall for all features
         fig_pr_all = go.Figure()
@@ -547,6 +562,21 @@ with tab3:
             fig_pr_preselected.add_trace(go.Scatter(x=recall, y=precision, mode='lines', name=name))
         fig_pr_preselected.update_layout(title='Precision-Recall Curves (Preselected Features)')
         st.plotly_chart(fig_pr_preselected)
+
+        
+        st.subheader("Precision-Recall Curves Analysis")
+        st.write("""
+            Precision-Recall curves are another important metric for evaluating the performance of classification models, especially in imbalanced datasets.
+    
+            - **Precision and Recall**: Precision measures the proportion of positive identifications that were 
+              actually correct, while recall measures the proportion of actual positives that were identified correctly.
+              
+            - **Curve Interpretation**: A high area under the curve represents both high recall and high precision. 
+              High precision relates to a low false positive rate, and high recall relates to a low false negative rate. 
+    
+            These curves provide insight into the trade-off between precision and recall for different threshold values, 
+            helping in the selection of an optimal threshold for decision making.
+        """)
         # Plotting ROC Curves for All Features
         fig_all = go.Figure()
         for name, (fpr, tpr, auc_score) in roc_data_all.items():
