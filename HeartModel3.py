@@ -209,7 +209,7 @@ X, y, _ = preprocess_data()
 # Caching the elbow curve calculation
 
 # Create Tabs
-tab0, tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "K-Means Clustering", "Model Comparison", "Model Tuning", "Model Evaluation"])
+tab0, tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "Model Introduction", "Model Comparison", "Model Tuning", "Model Evaluation"])
 # Tab 0: Introduction and Context Setting
 with tab0:
     st.header("Understanding Heart Disease and the Role of Machine Learning")
@@ -420,7 +420,7 @@ with tab3:
     """)
 
     # Preselected features
-    preselected_features = ['max_hr', 'age', 'st_depression', 'thalass_type', 'chest_pain', 'rest_bp', 'is_male']
+    preselected_features = ['max_hr', 'age', 'st_depression', 'thalass_type', 'chest_pain', 'rest_bp']
 
     # Data preprocessing for all features and preselected features
     X_all, y_all, _ = preprocess_data()
