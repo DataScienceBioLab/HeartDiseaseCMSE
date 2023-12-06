@@ -244,7 +244,35 @@ with tab0:
     Let's embark on this journey to uncover the potential of machine learning in 
     predicting heart disease and saving lives.
     """)
-    
+
+    st.subheader("Kevin Mok's Professional Journey")
+    st.write("""
+        Kevin Mok, a microbiologist with a Bachelor of Science from Michigan State University, 
+        has a rich background in scientific research and technology. His career spans roles 
+        as a Biotechnician at MSU's Bioeconomy Institute and as an Infantryman in the U.S. Army, 
+        where he honed skills in data analysis, biosafety protocols, and effective communication.
+
+        In the realm of microbiology, Kevin's work has centered on fermentation labs and process 
+        development teams, equipping him with hands-on experience in various microbial techniques. 
+        He has adeptly used programming for data processing, showcasing his ability to blend 
+        scientific expertise with technological solutions.
+    """)
+
+
+    st.subheader("Vision in Data Science and Bioinformatics")
+    st.write("""
+        Currently pursuing a Master's degree in Data Science at Michigan State University, Kevin 
+        is poised to be at the forefront of the emerging field of bioinformatics. He envisions data 
+        science as the fourth pillar of scientific discovery, particularly in unraveling the complexities 
+        of genetic sequencing and the microbiome.
+
+        With proficiency in Python, R, SQL, and a growing expertise in bioinformatics, Kevin aspires 
+        to leverage data science in advancing our understanding of biology. His goal is to contribute 
+        significantly to healthcare and environmental studies, utilizing data to drive innovative 
+        research and discovery in these critical areas.
+    """)
+
+
 with tab1:
     st.header("Exploring Machine Learning for Heart Disease Analysis")
     st.write("""
