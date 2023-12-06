@@ -202,7 +202,7 @@ def plot_feature_importance(importances, feature_names, title):
 
     
 # Setup
-st.title('Heart Disease Prediction with K-Means Clustering')
+st.title('Strengthening Heart Disease Prediction with Feature Generation by K-Means Clustering')
 
 # Data preprocessing
 X, y, _ = preprocess_data()
