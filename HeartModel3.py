@@ -363,11 +363,20 @@ with tab1:
 
 # Model Comparison Tab
 with tab2:
-    st.header("Data Preprocessing and Initial Model Evaluation")
+    st.header("Exploring the Influence of Feature Quantity on Model Accuracy")
     st.write("""
-    In this section, you can select features to include in the model and observe how different 
-    combinations of features affect model accuracy. The models are evaluated based on their 
-    performance with the selected features.
+        In this section, we examine the relationship between the number of features used in our models and their predictive accuracy. 
+
+        - **Incremental Feature Addition**: By progressively increasing the number of features in our models, 
+          we can observe how each addition contributes to overall performance. This helps in understanding 
+          the collective impact of features on the model's accuracy.
+
+        - **Identifying Optimal Feature Set**: This analysis also helps in identifying the optimal number 
+          of features where the model achieves high accuracy before the benefits of adding more features 
+          begin to diminish.
+
+        This approach offers insights into how model performance is affected by the quantity of features, 
+        allowing us to strike a balance between model complexity and predictive power.
     """)
     st.header("Feature Selection and Model Analysis")
 
@@ -411,7 +420,7 @@ with tab3:
     """)
 
     # Preselected features
-    preselected_features = ['max_hr', 'age', 'st_depression', 'thalass_type', 'chest_pain']
+    preselected_features = ['max_hr', 'age', 'st_depression', 'thalass_type', 'chest_pain', 'rest_bp', 'is_male']
 
     # Data preprocessing for all features and preselected features
     X_all, y_all, _ = preprocess_data()
