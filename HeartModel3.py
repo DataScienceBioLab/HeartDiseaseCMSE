@@ -342,14 +342,6 @@ with tab1:
     }
 
     feature_names = preprocessor.get_feature_names_out()  # Update with your preprocessor
-
-    for name, model in models.items():
-        model.fit(X_train, y_train)
-        if hasattr(model, 'feature_importances_'):
-            st.subheader(f'{name} Feature Importances')
-            plot_feature_importance(model.feature_importances_, feature_names, f'{name} Feature Importances')
-        else:
-            st.write(f'Feature importances are not available for the {name} model.')
     st.subheader("Evaluating Feature Significance")
     st.write("""
         Understanding which features most significantly predict heart disease is crucial in model development:
@@ -359,6 +351,14 @@ with tab1:
         
         Analyzing feature importance is key to enhancing model performance and gaining insights into heart disease.
     """)
+    for name, model in models.items():
+        model.fit(X_train, y_train)
+        if hasattr(model, 'feature_importances_'):
+            st.subheader(f'{name} Feature Importances')
+            plot_feature_importance(model.feature_importances_, feature_names, f'{name} Feature Importances')
+        else:
+            st.write(f'Feature importances are not available for the {name} model.')
+
 
 
 # Model Comparison Tab
