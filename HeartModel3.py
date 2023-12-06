@@ -209,8 +209,42 @@ X, y, _ = preprocess_data()
 # Caching the elbow curve calculation
 
 # Create Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["K-Means Clustering", "Model Comparison", "Model Tuning", "Model Evaluation"])
+tab0, tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "K-Means Clustering", "Model Comparison", "Model Tuning", "Model Evaluation"])
+# Tab 0: Introduction and Context Setting
+with tab0:
+    st.header("Understanding Heart Disease and the Role of Machine Learning")
+    
+    st.write("""
+    ### The Impact of Heart Disease
+    Heart disease is one of the leading causes of death globally. It encompasses a range 
+    of conditions affecting the heart, including coronary artery disease, arrhythmias, 
+    heart failure, and others. Early detection and prevention are key to reducing the 
+    mortality rate associated with heart disease.
+    
+    ### How Machine Learning Can Help
+    Machine learning (ML) offers promising tools in the fight against heart disease. By 
+    analyzing vast amounts of health data, ML algorithms can identify patterns and 
+    indicators that are often too complex or subtle for traditional analysis. These insights 
+    can lead to early prediction and diagnosis, personalized treatment plans, and better 
+    patient outcomes.
 
+    ### Our Approach
+    In this application, we explore how different machine learning models can be used 
+    to predict the risk of heart disease. We delve into various aspects of ML, from 
+    data preprocessing and feature selection to model tuning and evaluation. Our goal 
+    is to demonstrate the potential of ML in healthcare and provide an interactive 
+    experience for understanding its impact.
+    
+    ### Navigating the Application
+    - **Tab 1:** Explore data preprocessing and initial model evaluation.
+    - **Tab 2:** Dive into model tuning with adjustable hyperparameters.
+    - **Tab 3:** Investigate how k-means clustering can enhance model accuracy.
+    - **Tab 4:** View additional insights and conclusions.
+
+    Let's embark on this journey to uncover the potential of machine learning in 
+    predicting heart disease and saving lives.
+    """)
+    
 with tab1:
     st.header("Heart Disease Prediction App")
     st.write("""
